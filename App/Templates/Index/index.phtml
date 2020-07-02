@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>БЛОГ</title>
+</head>
+<body>
+
+<h1 class="title">
+    Добро пожаловать в блог!
+</h1>
+<form action="/login" class='title' method="post">
+    <input class="button" type="submit" name="login" value="Login">
+    <input class="button" type="submit" name="login" value="Register">
+</form>
+</body>
+</html>
+<style>
+    h1 {
+        color: red;
+    }
+
+    .title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .button {
+        border: none;
+        padding: 10px;
+        margin-right: 10px;
+    }
+
+    .button:last-child {
+        margin-right: 0;
+    }
+
+    .button:hover {
+        background-color: #ccc;
+    }
+</style>
