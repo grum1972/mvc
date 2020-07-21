@@ -2,7 +2,7 @@
 namespace Core;
 class Session{
     public function init(){
-        session_start();
+       session_start();
     }
     public function authUser(int $id) {
         $_SESSION['user_id']=$id;

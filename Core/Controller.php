@@ -9,6 +9,7 @@ class Controller {
     protected $session;
     /** @var bool  */
     protected $_render=true;
+    protected $tpl = null;
 
     public function getUser(): ?User
     {
@@ -33,15 +34,14 @@ class Controller {
 
         return false;
     }
-
+    public function getTpl()
+    {
+        return $this->tpl;
+    }
     public function setSession(Session $session)
     {
         $this->session = $session;
     }
-
-
-
-
 
     /**
      * @return bool

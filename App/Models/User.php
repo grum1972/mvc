@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Core\Context;
 
-class user
+class User
 {
     private $id;
     private $name;
@@ -34,7 +34,6 @@ class user
                     :created_at,
                     :email
                 )',
-            __FILE__,
             [
                 ':name' => $this->name,
                 ':password' => self::getPasswordHash($this->password),
@@ -43,21 +42,16 @@ class user
             ]
         );
 
+
         $this->id = $db->lastInsertId();
 
         return $res;
     }
-
-
-
-
-
     public static function getByEmail(string $email)
     {
         $db = Context::i()->getDb();
         $data = $db->fetchOne(
             "SELECT * fROM users WHERE email = :email",
-            __METHOD__,
             [':email' => $email]
         );
         if (!$data) {
@@ -72,7 +66,7 @@ class user
     public static function getById(int $id): ?self
     {
         $db = Context::i()->getDb();
-        $data = $db->fetchOne("SELECT * fROM users WHERE id = :id", __METHOD__, [':id' => $id]);
+        $data = $db->fetchOne("SELECT * fROM users WHERE id = :id", [':id' => $id]);
         if (!$data) {
             return null;
         }
@@ -97,14 +91,14 @@ class user
         return $this->password;
     }
 
-    public function getPasswordHash(string $password)
+    public static function getPasswordHash(string $password)
     {
         return sha1($password . 'salt');
     }
 
     public function isAdmin()
     {
-        return in_array($this->id, ADMIN);
+        return in_array($this->id, ADMIN_IDS);
     }
 
 

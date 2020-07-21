@@ -49,14 +49,22 @@ class Application
 
             $view = new View();
             $controllerObj->view = $view;
-            $res= $controllerObj->$actionFuncName();
 
+            $session= new Session();
+            $session->init();
 
+            $controllerObj->setSession($session);
+            $controllerObj->$actionFuncName();
 
             if ($controllerObj->needRender()) {
-                $tpl = 'App/Templates/' . $dispatcher->getControllerName() . '/' . $dispatcher->getActionName() . '.phtml';
-                $html = $view->render($tpl);
+                if (!$tpl = $controllerObj->getTpl()) {
+                    $tpl = $dispatcher->getControllerName() . '/' . $dispatcher->getActionName() . '.phtml';
+                }
+
+                $html = $view->render('App/Templates/' . $tpl);
                 echo $html;
+            } else {
+                header('Location: /');
             }
 
         } catch (Error404 $e) {

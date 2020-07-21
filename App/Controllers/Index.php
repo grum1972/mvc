@@ -2,46 +2,80 @@
 
 namespace App\Controllers;
 
+use App\Models\Message;
 use Core\Context;
 use Core\Controller as BaseController;
 
 class Index extends BaseController
 {
-
+    protected $user;
 
     public function indexAction()
     {
-        //echo '11';
-        //$this->view->var = 'Hello';
-        //include "App/Models/User.php";
-//        $db = Context::i()->getDb();
-//        $ret=$db->fetchOne("SELECT * FROM client WHERE id > :id ", __METHOD__, ['id' => 19]);
-//        var_dump($ret);
-//        $this->view->userModel = new \App\Models\ModelUser();
+        $this->user = $this->getUser();
+        if (!$this->getUser()) {
+            return;
+        }
+        $this->view->user = $this->user;
+        $this->view->name = $this->user->getName();
 
-        //$user->setName('Oleg');
-    }
-    public function loginAction()
-    {
-        //$this->_render=false;
+        $this->tpl = 'User/blog.phtml';
+        $messages = Message::getMessages(10);
+        $this->view->messages = $messages;
 
-         echo __METHOD__;
     }
 
-    public function registerAction()
+    public function deleteMessageAction()
     {
-        //$this->_render=false;
+        $messageId = (int) $_GET['id'];
+        Message::deleteMessage($messageId);
 
-        echo __METHOD__;
+        $this->_render = false;
+        $this->tpl = 'mvc/';
     }
 
+    // Получить последние N записей
 
-    public function userProfileAction()
+    public function lastMessagesAction()
     {
-        include "../Models/User.php";
-        $user = new User();
-        $user->load($_GET['id']);
-        $this->view->user = $user;
+        $this->user = $this->getUser();
+        if (!$this->getUser()) {
+            return;
+        }
+        $this->view->user = $this->user;
+        $this->view->name = $this->user->getName();
+
+        $this->tpl = 'User/blog.phtml';
+        $messages = Message::getMessages(3,true);
+        $this->view->messages = $messages;
+
+    }
+
+    public function addMessageAction()
+    {
+        $this->user = $this->getUser();
+        if (!$this->getUser()) {
+            return;
+        }
+        $text = (string)$_POST['text'];
+        if (!$text) {
+            $this->error('Сообщение не может быть пустым');
+        }
+
+        $message = new Message([
+            'text' => $text,
+            'author_id' => $this->getUserId(),
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        if (isset($_FILES['image']['tmp_name'])) {
+            $message->loadFile($_FILES['image']['tmp_name']);
+        }
+
+        $message->save();
+        $this->_render = false;
+        $this->tpl = 'mvc/';
+
     }
 
 }

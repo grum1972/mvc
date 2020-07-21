@@ -3,56 +3,60 @@
 namespace App\Controllers;
 
 use Core\Controller as BaseController;
+use App\Models\User;
 
 class Register extends BaseController
 {
     public function indexAction()
     {
-        echo '9999';
 
     }
 
     public function registerAction()
     {
 
-        //echo '8888';
         $name = (string)$_POST['name'];
         $email = (string)$_POST['email'];
         $password = (string)$_POST['password'];
         $password2 = (string)$_POST['password_2'];
 
 
+        $errors = [];
+
         if (!$name || !$password) {
-            //echo 'Не заданы имя и пароль';
-            return 1;
+            $errors[] = 'Не заданы имя и пароль';
         }
 
-       if (!$email) {
-           echo 'Не задан email';
-
-           return;
-
-       }
-       if ($password !== $password2) {
-           echo 'Введенные пароли не совпадают';
-
-           return;
-       }
-       if (mb_strlen($password) < 5) {
-            echo 'Пароль слишком короткий';
-           return;
+        if (!$email) {
+            $errors[] = 'Не задан email';
+        }
+        if ($password !== $password2) {
+            $errors[] = 'Введенные пароли не совпадают';
+        }
+        if (mb_strlen($password) < 5) {
+            $errors[] = 'Пароль слишком короткий';
         }
 
+        if (!empty($errors)) {
+            $this->view->errors = $errors;
+            $this->tpl = 'Register/index.phtml';
+            return;
+        } else {
 
-//        $userData = [
-//            'name' => $name,
-//            'created_at' => date('Y-m-d H:i:s'),
-//            'password' => $password,
-//            'email' => $email,
-//        ];
-//        $user = new User($userData);
-//        $user->save();
-//
-//        $this->session->authUser($user->getId());
+            $this->tpl = 'User/blog.phtml';
+        }
+
+        $userData = [
+            'name' => $name,
+            'created_at' => date('Y-m-d H:i:s'),
+            'password' => $password,
+            'email' => $email,
+        ];
+
+        $user = new User($userData);
+        $user->save();
+
+        $this->session->authUser((int)$user->getId());
+
     }
 }

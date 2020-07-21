@@ -10,9 +10,23 @@
 <body>
 <h1>L O G I N</h1>
 <form action="/login/auth" method="post">
+
     <div class="form">
-        Login: <input type="text">
-        Password: <input type="password">
+
+        <?php
+        if (!empty($errors = $this->errors)) { ?>
+            <div class="errors">
+                <?php
+                foreach ($errors as $error) {
+                    echo $error . "<br>";
+                }
+                ?>
+            </div>
+        <?php } ?>
+
+
+        Login (e-mail): <input class="input" type="text" name="email">
+        Password : <input class="input" type="password" name="password">
         <input type="submit" value="Login">
     </div>
 </form>
@@ -22,6 +36,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .errors {
+        margin-bottom: 30px;
+        border: red 2px solid;
     }
 </style>
 </html>
