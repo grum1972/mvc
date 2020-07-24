@@ -7,6 +7,10 @@ use App\Models\User;
 
 class Login extends BaseController
 {
+    public function indexAction()
+    {
+
+    }
 
     public function authAction()
     {

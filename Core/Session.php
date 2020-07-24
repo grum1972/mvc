@@ -10,4 +10,7 @@ class Session{
     public function getUserId(){
         return $_SESSION['user_id'] ?? false;
     }
+    public function exit(){
+        $_SESSION['user_id']=null;
+    }
 }

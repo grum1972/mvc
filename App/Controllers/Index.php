@@ -13,7 +13,7 @@ class Index extends BaseController
     public function indexAction()
     {
         $this->user = $this->getUser();
-        if (!$this->getUser()) {
+        if (!$this->user) {
             return;
         }
         $this->view->user = $this->user;
@@ -39,7 +39,7 @@ class Index extends BaseController
     public function lastMessagesAction()
     {
         $this->user = $this->getUser();
-        if (!$this->getUser()) {
+        if (!$this->user) {
             return;
         }
         $this->view->user = $this->user;
@@ -54,7 +54,7 @@ class Index extends BaseController
     public function addMessageAction()
     {
         $this->user = $this->getUser();
-        if (!$this->getUser()) {
+        if (!$this->user) {
             return;
         }
         $text = (string)$_POST['text'];

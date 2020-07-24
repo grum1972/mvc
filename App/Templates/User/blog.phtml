@@ -21,10 +21,17 @@ $user = $this->user;
         </h1>
         <div class="links">
             <div class="last">
+                <a href="/Index">All messages </a>
+            </div>
+            <div class="last">
                 <a href="/Index/lastMessages">3 last messages </a>
             </div>
+
             <div class="api">
                 <a href="/Api/getUserMessage/?id=<?= $user->getId(); ?>">Get the user's 5 last messages at JSON (API)</a>
+            </div>
+            <div >
+                <a href="/index/exit">Exit</a>
             </div>
 
         </div>
@@ -74,6 +81,7 @@ $user = $this->user;
             <input type="file" name="image"><br>
             <input class='button' type="submit" value="Отправить">
         </form>
+
     </section>
 </div>
 </body>

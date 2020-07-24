@@ -51,11 +51,12 @@ class Controller {
         return $this->_render;
     }
 
-
-
-
-
-
+    public function exitAction()
+    {
+        $this->_render = false;
+        $this->session->exit();
+        $this->tpl = 'mvc/';
+    }
 
     /** @var array  */
     protected $_jsonData = [];

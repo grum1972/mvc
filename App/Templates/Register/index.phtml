@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>R E G I S T E R</h1>
+
 <form action="/register/register" method="post">
     <div class="form">
         <?php
@@ -25,8 +26,17 @@
         <input type="submit" value="Register">
     </div>
 </form>
+<div class="exit">
+    <a href="Index/exit">Exit</a>
+</div>
 </body>
 <style>
+    .exit {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+    }
     .form {
         display: flex;
         flex-direction: column;

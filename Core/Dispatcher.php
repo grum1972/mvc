@@ -44,18 +44,6 @@ class Dispatcher
         }
 
 
-//        $routes = $this->getRoutes();
-//
-//        if (isset($routes[$this->_controllerName]) && isset($routes[$this->_controllerName][$this->_actionName])) {
-//
-//            list($this->_controllerName, $this->_actionName,$this->_tplName) = explode('.', $routes[$this->_controllerName][$this->_actionName]);
-//        } else {
-//            $this->_actionName = self::DEFAULT_ACTION;
-//            $this->_controllerName = self::DEFAULT_CONTROLLER;
-//
-//        }
-
-
     }
 
     public function check(string $key)

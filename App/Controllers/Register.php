@@ -42,8 +42,7 @@ class Register extends BaseController
             $this->tpl = 'Register/index.phtml';
             return;
         } else {
-
-            $this->tpl = 'User/blog.phtml';
+            $this->_render = false;
         }
 
         $userData = [
