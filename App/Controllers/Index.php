@@ -12,6 +12,7 @@ class Index extends BaseController
 
     public function indexAction()
     {
+
         $this->user = $this->getUser();
         if (!$this->user) {
             return;

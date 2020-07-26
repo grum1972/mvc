@@ -20,7 +20,7 @@ private static $installed = array (
     array (
       0 => '9999999-dev',
     ),
-    'reference' => '6d2b7548b4ddc317e7afd48f3398b829c6f6aa70',
+    'reference' => '0b869490ac8d2124a0d4798c3c5f9e81037c919d',
     'name' => '__root__',
   ),
   'versions' => 
@@ -33,7 +33,7 @@ private static $installed = array (
       array (
         0 => '9999999-dev',
       ),
-      'reference' => '6d2b7548b4ddc317e7afd48f3398b829c6f6aa70',
+      'reference' => '0b869490ac8d2124a0d4798c3c5f9e81037c919d',
     ),
     'doctrine/lexer' => 
     array (
@@ -53,6 +53,25 @@ private static $installed = array (
       ),
       'reference' => 'cfa3d44471c7f5bfb684ac2b0da7114283d78441',
     ),
+    'guzzlehttp/psr7' => 
+    array (
+      'pretty_version' => '1.6.1',
+      'version' => '1.6.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '239400de7a173fe9901b9ac7c06497751f00727a',
+    ),
+    'intervention/image' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '2.4.x-dev',
+      ),
+      'reference' => '9355b63bcffd079fc5d37fe86f89801d4ae24f7b',
+    ),
     'paragonie/random_compat' => 
     array (
       'pretty_version' => 'v9.99.99',
@@ -62,6 +81,31 @@ private static $installed = array (
       ),
       'reference' => '84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95',
     ),
+    'psr/http-message' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
+    ),
+    'psr/http-message-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'ralouphie/getallheaders' => 
+    array (
+      'pretty_version' => '3.0.3',
+      'version' => '3.0.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
     'swiftmailer/swiftmailer' => 
     array (
       'pretty_version' => 'v6.2.3',
@@ -70,6 +114,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '149cfdf118b169f7840bbe3ef0d4bc795d1780c9',
+    ),
+    'symfony/polyfill-ctype' => 
+    array (
+      'pretty_version' => 'v1.18.0',
+      'version' => '1.18.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1c302646f6efc070cd46856e600e5e0684d6b454',
     ),
     'symfony/polyfill-iconv' => 
     array (
@@ -124,6 +177,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '639447d008615574653fb3bc60d1986d7172eaae',
+    ),
+    'twig/twig' => 
+    array (
+      'pretty_version' => 'v3.0.4',
+      'version' => '3.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '582bdbdc173027ebfba3c93dc750a40b8f9ebc02',
     ),
   ),
 );

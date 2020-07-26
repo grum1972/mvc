@@ -61,7 +61,7 @@ class Application
                     $tpl = $dispatcher->getControllerName() . '/' . $dispatcher->getActionName() . '.phtml';
                 }
 
-                $html = $view->render('App/Templates/' . $tpl);
+                $html = $view->render($tpl);
                 echo $html;
             } else {
                 header('Location: /');
